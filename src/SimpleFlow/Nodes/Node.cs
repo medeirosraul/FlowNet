@@ -1,10 +1,11 @@
-﻿using SimpleFlow.Processes;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SimpleFlow.Processes;
 using System;
 using System.Threading.Tasks;
 
 namespace SimpleFlow.Nodes
 {
-    public class Node<TProcess> : INode<TProcess>
+    public class Node<TProcess> : INode
         where TProcess : IProcess
     {
         private readonly string _identifier;
@@ -23,9 +24,9 @@ namespace SimpleFlow.Nodes
             _name = name;
         }
 
-        public void Activate(TProcess process)
+        public void Activate(IServiceProvider serviceProvider)
         {
-            _process = process;
+            _process = serviceProvider.GetRequiredService<TProcess>();
         }
 
         public void Execute()

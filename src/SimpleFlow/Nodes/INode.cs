@@ -3,12 +3,10 @@ using System.Threading.Tasks;
 
 namespace SimpleFlow.Nodes
 {
-    public interface INode<TProcess>
-        where TProcess : IProcess
+    public interface INode
     {
         string Identifier { get; }
         string Name { get; }
-        void Activate(TProcess process);
         void Execute();
         Task ExecuteAsync();
     }

@@ -14,9 +14,9 @@ namespace FlowNet.Nodes
 
         public Type ProcessType;
 
-        public IList<INode> Previous { get } = [];
+        public IList<INode> Previous { get; } = [];
 
-        public IList<INode> Next { get } = [];
+        public IList<INode> Next { get; } = [];
 
         public string Identifier => _identifier;
 

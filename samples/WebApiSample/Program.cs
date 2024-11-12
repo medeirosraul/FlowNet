@@ -1,6 +1,4 @@
 using FlowNet;
-using WebApiSample.Processes;
-using WebApiSample.Processes.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,15 +10,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Flow Example
-builder.Services.AddFlow("Example", options =>
-{
-    options.CreateBuilder(builder =>
-    {
-        builder
-            .AddNode<SaleContext>("Initial", "Init checkout").WithProcess<InitProcess>()
-            .AddNext<SaleContext>("Discount", "Apply discounts").WithProcess<DiscountProcess>();
-    });
-});
+//builder.Services.AddFlow("Example", options =>
+//{
+//    options.CreateBuilder(builder =>
+//    {
+//        builder
+//            .AddNode<SaleContext>("Initial", "Init checkout").WithProcess<InitProcess>()
+//            .AddNext<SaleContext>("Discount", "Apply discounts").WithProcess<DiscountProcess>();
+//    });
+//});
 
 var app = builder.Build();
 

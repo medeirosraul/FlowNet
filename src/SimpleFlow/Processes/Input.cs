@@ -2,29 +2,15 @@
 
 namespace SimpleFlow.Processes
 {
-    public class Input<TInput>
-            where TInput : class
+    public class Input<TValue> : IInput<TValue>
     {
-        private TInput? _value;
+        private TValue _value = default!;
 
-        public event EventHandler? ValueChanged;
+        public TValue Value => _value;
 
-        public TInput? Value
+        public void SetValue(TValue value)
         {
-            get => _value;
-            set
-            {
-                if (!Equals(this._value, value))
-                {
-                    this._value = value;
-                    OnValueChanged(EventArgs.Empty);
-                }
-            }
-        }
-
-        protected virtual void OnValueChanged(EventArgs e)
-        {
-            ValueChanged?.Invoke(this, e);
+            _value = value;
         }
     }
 }
